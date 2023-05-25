@@ -22,8 +22,9 @@ export default{
         <h1 class="title">Film</h1>
         <div class="movies">
             <AppMovies class="content-movies" v-for="movie in store.ArrMovies"
-            :backdrop_path="movie.backdrop_path"
+            
             :key="movie.id"
+            :poster_path="movie.poster_path"
             :title="movie.title"
            :original_title="movie.original_title"
             :original_language="movie.original_language"
@@ -34,6 +35,7 @@ export default{
         <div class="series">
             <AppSeries class="content-series" v-for="series in store.ArrSeries" 
             :key="series.id"
+            :poster_path="series.poster_path"
             :name="series.name"
             :original_name="series.original_name"
             :original_language="series.original_language"
