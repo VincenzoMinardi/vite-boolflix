@@ -16,6 +16,7 @@ export default{
   components:{
     AppHeader,
     AppMain,
+
    
   },
   
@@ -32,7 +33,7 @@ export default{
         })
         .then(response => (this.store.ArrMovies = response.data.results));
 
-        axio
+        axios
         .get('https://api.themoviedb.org/3/search/tv',{
           params: {
             api_key:'9e04c5da40305d4ce8cd80dd04de004b',
@@ -56,7 +57,7 @@ export default{
 <template>
  
   <AppHeader @SearchMovies="formApi"/> 
-  <AppMain /> 
+  <AppMain />
 </template>
 
 <style>

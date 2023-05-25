@@ -1,8 +1,7 @@
 <script>
-import { store } from '../store'
 import AppMovies from './AppMovies.vue'
 import AppSeries from './AppSeries.vue'
-
+import { store } from '../store'
 
 export default{
     data() {
@@ -13,15 +12,17 @@ export default{
 
     components:{
         AppMovies,
-        AppSeries
+        AppSeries,
     }
 }
 </script>
 
 <template>
     <div class="container">
+        <h1 class="title">Film</h1>
         <div class="movies">
-            <AppMovies v-for="movie in ArrMovies"
+            <AppMovies class="content-movies" v-for="movie in store.ArrMovies"
+            :backdrop_path="movie.backdrop_path"
             :key="movie.id"
             :title="movie.title"
            :original_title="movie.original_title"
@@ -29,8 +30,9 @@ export default{
             :vote_average="movie.vote_average"
             />
         </div>
+        <h1 class ="title">Serie TV</h1>
         <div class="series">
-            <AppSeries v-for="series in ArrSeries" 
+            <AppSeries class="content-series" v-for="series in store.ArrSeries" 
             :key="series.id"
             :name="series.name"
             :original_name="series.original_name"
@@ -44,6 +46,36 @@ export default{
 
 <style lang="scss" scoped>
 .container{
-    height: 100vh;
+    background-color:black;
+    height: 100%;
+
+    
+    .title{
+        color: red;
+    }
+
+    .movies{
+       
+       
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        border: 1px solid white;
+        .content-movies{
+            color: white;
+        }
+    }
+
+    .series{
+        
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        border: 1px solid white;
+        .content-series{
+            color: white;
+        }
+    }
+    
 }
 </style>
