@@ -10,7 +10,7 @@ export default{
   
   data() {
     return {
-        store,
+        store
     }
 },
   components:{
@@ -21,15 +21,22 @@ export default{
   
   
   methods: {
-    SearchMovie(){
+    formApi(SearchMovies){
       axios
-        .get('https://api.themoviedb.org/3/search/movie?api_key=21df2f399925b36ce74442455c67fc8a&query=all',)
+         .get('https://api.themoviedb.org/3/movie/550',{
+            params: {
+            api_key:'9e04c5da40305d4ce8cd80dd04de004b',
+            query: SearchMovies,
+            
+          },
+        })
         .then(response => (this.store.ArrMovies = response.data.results));
+        
       },
     },
 
     created(){
-      this.SearchMovie()
+      this.formApi
     },
   };
 
@@ -37,12 +44,8 @@ export default{
 </script>
 
 <template>
-  <!-- <ul>
-    <li v-for=" (movie, index) in store.ArrMovies" :key="index">
-      {{movie}}
-    </li>
-  </ul> -->
-  <AppHeader /> 
+ 
+  <AppHeader @SearchMovies="formApi()"/> 
   <AppMain /> 
 </template>
 

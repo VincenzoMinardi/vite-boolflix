@@ -1,5 +1,18 @@
 <script>
+import {store} from '../store'
 export default{
+    data() {
+        return {
+            store,
+        }
+        
+    },
+
+    methods: {
+       emitFormSearch(){
+            this.$emit('SearchMovies')
+        }
+    },
 }
 
 </script>
@@ -8,12 +21,12 @@ export default{
     <div class="searchbar">
         <h1 class="title">Vite-Boolflix</h1>
         <div>
-            <input class="text" type="text">
+            <input v-model="store.SearchMovies" class="text" type="text"
+            @keyup.enter="emitFormSearch">
+        
             <button class="bt-confirm">CERCA</button>
         </div>
-      
     </div>
-  
 </template>
 
 <style lang="scss" scoped>
