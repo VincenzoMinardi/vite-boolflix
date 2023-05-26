@@ -46,10 +46,27 @@ export default {
     },
   },
 
+
   created() {
-    this.formApi()
-  },
+    axios
+      .get('https://api.themoviedb.org/3/movie/popular', {
+        params: {
+          api_key: '21df2f399925b36ce74442455c67fc8a'
+        }
+      })
+      .then(response => (this.store.ArrMovies = response.data.results));
+
+    axios
+      .get('https://api.themoviedb.org/3/tv/popular', {
+        params: {
+          api_key: '21df2f399925b36ce74442455c67fc8a'
+        }
+      })
+      .then(response => (this.store.ArrSeries = response.data.results));
+
+  }
 };
+
 
 
 </script>

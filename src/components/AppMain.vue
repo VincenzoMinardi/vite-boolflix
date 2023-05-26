@@ -37,39 +37,18 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-
-    background-color: rgb(54, 54, 54);
-    height: 100%;
-    width: 100%;
-
-
-    .title {
-        color: red;
-    }
+    background-color: black;
+    color: white;
 
     .movies {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 3rem;
-        border: 1px solid white;
+        overflow-y: auto;
 
-        .content-movies {
-            color: white;
-        }
     }
 
     .series {
-
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 3rem;
-        border: 1px solid white;
-
-        .content-series {
-            color: white;
-        }
+        overflow-y: auto;
     }
 
 }

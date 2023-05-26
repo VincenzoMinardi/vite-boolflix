@@ -54,25 +54,62 @@ export default {
 
 </script>
 <template>
-    <div>
-
-        <img class="image" v-if="poster_path" :src="`http://image.tmdb.org/t/p/w342${poster_path}`" :alt="poster_path">
-        <img v-else src="../assets/img/Non-disponibile-_04.jpg" alt="">
-        <div>
-            <h1>{{ title }}</h1>
-            <h2>{{ original_title }}</h2>
-            <span><img :src="languageImage(original_language)" alt=""></span>
+    <div class="big-container">
+        <div class="card-front">
+            <img v-if="poster_path" :src="`http://image.tmdb.org/t/p/w342${poster_path}`" :alt="poster_path">
+            <img v-else src="../assets/img/Non-disponibile-_04.jpg" alt="">
+        </div>
+        <div class="card-black">
+            <div>
+                <div class="font">{{ title }}</div>+
+            </div>
+            <div>
+                <div class="font">{{ original_title }}</div>
+            </div>
+            <div>
+                <span><img :src="languageImage(original_language)" alt=""></span>
+            </div>
             <div>{{ transformPrintReview(vote_average) }}</div>
         </div>
-
     </div>
 </template>
 
 
 <style lang="scss" scoped>
-.image {
-    height: 500px;
-    width: 350px;
+.big-container {
+    position: relative;
+    width: 342px;
 
+}
+
+.card-front {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease;
+}
+
+.card-black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 342px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.font {
+    font-size: 3rem;
+}
+
+.big-container:hover .card-front {
+    opacity: 0;
+}
+
+.big-container:hover .card-black {
+    opacity: 1;
 }
 </style>
