@@ -41,6 +41,8 @@ export default {
 
 
 
+
+
     },
     props: {
         poster_path: String,
@@ -64,7 +66,7 @@ export default {
                 <div class="font">{{ title }}</div>+
             </div>
             <div>
-                <div class="font">{{ original_title }}</div>
+                <div v-show="original_title !== title" class="font">{{ original_title }}</div>
             </div>
             <div>
                 <span><img :src="languageImage(original_language)" alt=""></span>
@@ -79,6 +81,7 @@ export default {
 .big-container {
     position: relative;
     width: 342px;
+    margin-left: 1.5rem;
 
 }
 

@@ -60,7 +60,7 @@ export default {
                 <div class="font">{{ name }}</div>+
             </div>
             <div>
-                <div class="font">{{ original_name }}</div>
+                <div v-show="original_name !== name" class="font">{{ original_name }}</div>
             </div>
             <div>
                 <span><img :src="languageImage(original_language)" alt=""></span>
@@ -75,7 +75,7 @@ export default {
 .big-container {
     position: relative;
     width: 342px;
-
+    margin-left: 1.5rem
 }
 
 .card-front {
