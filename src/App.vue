@@ -6,64 +6,63 @@ import axios from 'axios';
 
 
 
-export default{
-  
+export default {
+
   data() {
     return {
-        store,
+      store,
     }
-},
-  components:{
+  },
+  components: {
     AppHeader,
     AppMain,
 
-   
+
   },
-  
-  
+
+
   methods: {
-    formApi(){
+    formApi() {
       axios
-         .get('https://api.themoviedb.org/3/search/movie',{
-            params: {
-            api_key:'9e04c5da40305d4ce8cd80dd04de004b',
+        .get('https://api.themoviedb.org/3/search/movie', {
+          params: {
+            api_key: '9e04c5da40305d4ce8cd80dd04de004b',
             query: this.store.SearchMovies,
-            
+
           },
         })
         .then(response => (this.store.ArrMovies = response.data.results));
 
-        axios
-        .get('https://api.themoviedb.org/3/search/tv',{
+      axios
+        .get('https://api.themoviedb.org/3/search/tv', {
           params: {
-            api_key:'9e04c5da40305d4ce8cd80dd04de004b',
+            api_key: '9e04c5da40305d4ce8cd80dd04de004b',
             query: this.store.SearchMovies,
-            
+
           },
         })
         .then(response => (this.store.ArrSeries = response.data.results));
-        
-      },
-    },
 
-    created(){
-      this.formApi()
     },
-  };
+  },
+
+  created() {
+    this.formApi()
+  },
+};
 
 
 </script>
 
 <template>
- 
-  <AppHeader @SearchMovies="formApi"/> 
+  <AppHeader @SearchMovies="formApi" />
   <AppMain />
 </template>
 
 <style>
-  *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 </style>
